@@ -73,10 +73,19 @@ class BookingController extends Controller
 
         return view('history', ['bookings' => $bookings]);
     }
+
     public function show($id) {
         $restos = Resto::find($id);
-        // dd(gettype($restos));
         return view('details', compact('restos'));
+    }
+    
+    public function invoice($id) {
+        $booking = Booking::findOrFail($id);
+    
+        // Find the corresponding restaurant based on the booking's restaurant_id
+        $resto = Resto::findOrFail($booking->restaurant_id);
+    
+        return view('invoice', compact('resto', 'booking'));
     }
 
     public function callback(Request $request) {

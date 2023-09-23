@@ -25,6 +25,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // })->name('kategori');
 
 Route::get('/', [RestoController::class, 'welcome'])->name('welcome');
+Route::get('invoice/{id}', [BookingController::class, 'invoice'])->name('invoice');
 Route::get('kategori', [RestoController::class, 'kategori'])->name('kategori');
 Route::get('favorit', [RestoController::class, 'favorit'])->name('favorit')->middleware('auth');
 Route::get('history', [BookingController::class, 'history'])->name('history')->middleware('auth');
@@ -39,6 +40,7 @@ Route::get('/request-resto', [FormRestoController::class, 'index'])->name('resto
 Route::get('/live-search', [RestoController::class, 'liveSearch'])->name('liveSearch');
 Route::get('/register/admin/resto', [ReqRestoController::class, 'registeradminresto'])->name('register.admin.resto');
 Route::post('/register/admin/resto/store', [ReqRestoController::class, 'adminuser'])->name('store.admin.resto');
+
 
 
 

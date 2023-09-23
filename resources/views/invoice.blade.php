@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id" class="overflow-x-hidden">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -119,24 +118,24 @@
             <div class="flex flex-wrap">
                 <div class="w-full self-start px-4 lg:px-12 lg:w-1/2 lg:pb-10">
                     <div class="relative lg:right-0 "><img id="mainImage"
-                            src="{{ asset('storage/' . $restos->photo_1) }}" alt="abimanyu"
+                            src="{{ asset('storage/' . $resto->photo_1) }}" alt="abimanyu"
                             class=" w-full mx-auto relative " /></div>
                     <div class="flex-wrap flex">
                         <div class="w-1/2 p-2  sm:w-1/3 rounded-  lg">
                             <a href="#" class="block">
-                                <img src="{{ asset('storage/' . $restos->photo_1) }}" alt=""
+                                <img src="{{ asset('storage/' . $resto->photo_1) }}" alt=""
                                     class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
                         <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
                             <a href="#" class="block ">
-                                <img src="{{ asset('storage/' . $restos->photo_2) }}" alt=""
+                                <img src="{{ asset('storage/' . $resto->photo_2) }}" alt=""
                                     class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
                         <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
                             <a href="#" class="block ">
-                                <img src="{{ asset('storage/' . $restos->photo_3) }}" alt=""
+                                <img src="{{ asset('storage/' . $resto->photo_3) }}" alt=""
                                     class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
@@ -144,7 +143,7 @@
                 </div>
                 <div class=" w-full px-4 sticky top-0 lg:w-1/2"">
                     <div class="lg:pl-22">
-                        <h1 class="font-semibold text-xl lg:text-4xl mb-3">Konfirmasi Pesanan
+                        <h1 class="font-semibold text-xl lg:text-4xl mb-3">Invoice Pemesanan
                         </h1>
                         <div class="w-full block">
                             <div class="bg-[#F5F5F5] w-full px-7 py-7 rounded-2xl inline-flex my-2">
@@ -183,15 +182,8 @@
                             </div>
 
                             <div class="w-full inline-flex my-2">
-                                @if ($booking->status === 'Success')
-                                    <a href="{{ route('dashboard') }}"
-                                        class="w-full bg-primary px-y py-7 rounded-2xl text-lg text-white">Kembali ke
-                                        Beranda</a>
-                                @else
-                                    <button type="submit" id="pay-button"
-                                        class="w-full bg-primary px-y py-7 rounded-2xl text-lg text-white">Bayar
-                                        Sekarang</button>
-                                @endif
+                                <a href="{{asset('menu woodz resto_compressed.pdf')}}" download="Invoice.pdf"
+                                    class="w-full bg-primary px-y py-7 text-center rounded-2xl text-lg text-white">Download Invoice</a>
                             </div>
                         </div>
                     </div>
@@ -200,55 +192,6 @@
         </div>
         </div>
     </section>
-
-
-    @extends('templates.footer')
-
-    <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay('{{ $snapToken }}', {
-                onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    Swal.fire(
-                        'Pembayaran Berhasil 😄',
-                        'Nikmati Waktumu Di Tempat Pilihamu!',
-                        'success'
-                    );
-                    setTimeout(function() {
-                        window.location.href = '/invoice/{{ $booking->id }}';
-                    }, 4000);
-                },
-                onPending: function(result) {
-                    /* You may add your own implementation here */
-                    alert("wating your payment!");
-                    console.log(result);
-                },
-                onError: function(result) {
-                    /* You may add your own implementation here */
-                    Swal.fire(
-                        'Pembayaran Gagal 😔',
-                        'Selesaikan Pembayaran',
-                        'warning'
-                    )
-                },
-                onClose: function() {
-                    /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
-                }
-            })
-        });
-
-
-
-        function changeImage(element) {
-            const mainImage = document.getElementById("mainImage");
-            mainImage.src = element.src;
-        }
-    </script>
-
 
     <script src="./dist/js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
