@@ -11,7 +11,7 @@
                             class="search-form bg-white rounded-full flex justify-center items-center border border-primary ">
                             <input
                                 class=" border-transparent focus:border-transparent focus:ring-0 py-2.5 lg:w-[975px] pr-4 pl-4 bg-white rounded-full focus:outline-none border-none"
-                                type="search" name="search" id="searchbar" onkeyup="search_resto()"
+                                type="text" name="search" id="searchbar" onkeyup="search_resto()"
                                 placeholder="Cari disini..." />
                             <label>
                                 <i class="mr-4 lg:w-6 lg:h-6 text-primary w-5 h-5" data-feather="search"></i>

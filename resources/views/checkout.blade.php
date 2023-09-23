@@ -114,89 +114,135 @@
         </div>
     </header>
 
-        <section id="" class=" pt-24  lg:pt-40 mb-7">
-            <div class="container mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="card hover:bg-primary bg-[#EDEDED] transition py-3 px-3 rounded-xl">
-                            <div href="" class="group block rounded-lg">
-                                <img src="{{ asset('storage/' . $booking->restaurant->photo_1) }}" alt=""
-                                    class="h-full w-full object-cover rounded-lg col-span-1" />
-                                <div class="col-span-2 mt-3 ml-3">
-                                    <h3 class="text-gray-900 group-hover:text-white lg:text-2xl font-semibold">
-                                        {{ $booking->restaurant->name }}
-                                    </h3>
-                                    <p class=" text-sm text-gray-900 group-hover:text-white">
-                                        {{ $booking->restaurant->address }}
-                                    </p>
-                                    <p class="group-hover:text-white text-sm text-gray-900 mt-2">
-                                        <span class="font-thin">Kursi Dipilih:</span>
-                                        @php
-                                            $selectedSeats = explode(',', $booking->selected_seats);
-                                            $formattedSeats = [];
-        
-                                            foreach ($selectedSeats as $seat) {
-                                                $formattedSeat = trim($seat);
-        
-                                                // Hanya tambahkan "Kursi" jika nomor kursi tidak kosong
-                                                if (!empty($formattedSeat)) {
-                                                    $formattedSeats[] = $formattedSeat;
-                                                }
-                                            }
-        
-                                            echo implode(', ', $formattedSeats);
-                                        @endphp
-                                    </p>
-                                    <p class="group-hover:text-white text-sm text-gray-900">
-                                        <span class="font-thin">Tanggal Pemesanan:</span>
-                                        {{ \Carbon\Carbon::parse($booking->booking_date)->format('d F Y') }}
-                                    </p>
-                                    <p class=" group-hover:text-white text-sm text-gray-900">
-                                        <span class=" font-thin">Status:</span> Processing
-                                    </p>
-                                    <button type="submit" id="pay-button"
-                                        class="group-hover:border-white group-hover:border-2 justify-center cursor-pointer mt-3 w-full py-3 px-2 rounded-lg bg-primary text-white lg:text-lg">
-                                        Details
-                                    </button>
+    <section id="" class=" pt-24  lg:pt-40 ">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap">
+                <div class="w-full self-start px-4 lg:px-12 lg:w-1/2 lg:pb-10">
+                    <div class="relative lg:right-0 "><img id="mainImage"
+                            src="{{ asset('storage/' . $restos->photo_1) }}" alt="abimanyu"
+                            class=" w-full mx-auto relative " /></div>
+                    <div class="flex-wrap flex">
+                        <div class="w-1/2 p-2  sm:w-1/3 rounded-  lg">
+                            <a href="#" class="block">
+                                <img src="{{ asset('storage/' . $restos->photo_1) }}" alt=""
+                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                            </a>
+                        </div>
+                        <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
+                            <a href="#" class="block ">
+                                <img src="{{ asset('storage/' . $restos->photo_2) }}" alt=""
+                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                            </a>
+                        </div>
+                        <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
+                            <a href="#" class="block ">
+                                <img src="{{ asset('storage/' . $restos->photo_3) }}" alt=""
+                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                    <div class=" w-full px-4 sticky top-0 lg:w-1/2"">
+                        <div class="lg:pl-22">
+                            <h1 class="font-semibold text-xl lg:text-4xl mb-3">Konfirmasi Pesanan
+                            </h1>
+                            <div class="w-full block">
+                                <div class="bg-[#F5F5F5] w-full px-7 py-7 rounded-2xl inline-flex my-2">
+                                    <i data-feather="map-pin" class="text-gray-600 mr-5 w-8 h-8 self-center"></i>
+                                    <div class="block">
+                                        <h3 class="text-lg font-thin text-gray-600">Lokasi</h3>
+                                        <h3 class="text-2xl font-bold text-black">{{ $booking->restaurant->name }}, <span class="font-semibold text-xl text-gray-800">{{ $booking->restaurant->address }}</span> </h3>
+                                    </div>
+                                </div>
+                                <div class="bg-[#F5F5F5] w-full px-7 py-7 rounded-2xl inline-flex my-2">
+                                    <i data-feather="clock" class="text-gray-600 mr-5 w-8 h-8 self-center"></i>
+                                    <div class="block">
+                                        <h3 class="text-lg font-thin text-gray-600">Tanggal & Waktu</h3>
+                                        <h3 class="text-2xl font-semibold text-gray-700">{{ $booking->booking_date }}, {{ $booking->booking_time }} </h3>
+                                    </div>
+                                </div>
+                                <div class=" flex">
+                                    <div class="bg-[#F5F5F5] w-full px-7 py-7 rounded-2xl inline-flex mx-2 my-2">
+                                        <i data-feather="users" class="text-gray-600 mr-5 w-8 h-8 self-center"></i>
+                                        <div class="block">
+                                            <h3 class="text-lg font-thin text-gray-600">Jumlah Pesanan</h3>
+                                            <h3 class="text-2xl font-semibold text-gray-700">{{ $booking->table_count }} Meja</h3>
+                                        </div>
+                                    </div> 
+                                    <div class="bg-[#F5F5F5] w-full px-7 py-7 rounded-2xl inline-flex mx-2 my-2">
+                                        <i data-feather="users" class="text-gray-600 mr-5 w-8 h-8 self-center"></i>
+                                        <div class="block">
+                                            <h3 class="text-lg font-thin text-gray-600">Status Pembayaran</h3>
+                                            <h3 class="text-2xl font-semibold text-gray-700">{{ $booking->status }}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="w-full inline-flex my-2">
+                                    @if ($booking->status === 'Success')
+                                        <a href="{{ route('dashboard') }}" class="w-full bg-primary px-y py-7 rounded-2xl text-lg text-white">Kembali ke Beranda</a>
+                                    @else
+                                        <button type="submit" id="pay-button" class="w-full bg-primary px-y py-7 rounded-2xl text-lg text-white">Bayar Sekarang</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
             </div>
-            </div>
-        </section>
+        </div>
+        </div>
+    </section>
+
 
     @extends('templates.footer')
-
+    
     <script type="text/javascript">
+
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function () {
-          // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-          window.snap.pay('{{$snapToken}}', {
-            onSuccess: function(result){
-              /* You may add your own implementation here */
-              alert("payment success!"); console.log(result);
-            },
-            onPending: function(result){
-              /* You may add your own implementation here */
-              alert("wating your payment!"); console.log(result);
-            },
-            onError: function(result){
-              /* You may add your own implementation here */
-              alert("payment failed!"); console.log(result);
-            },
-            onClose: function(){
-              /* You may add your own implementation here */
-              alert('you closed the popup without finishing the payment');
-            }
-          })
+        payButton.addEventListener('click', function() {
+            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay('{{ $snapToken }}', {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    Swal.fire(
+                        'Pembayaran Berhasil 😄',
+                        'Nikmati Waktumu Di Tempat Pilihamu!',
+                        'success'
+                    )
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    Swal.fire(
+                        'Pembayaran Gagal 😔',
+                        'Selesaikan Pembayaran',
+                        'warning'
+                    )
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
         });
 
 
-        feather.replace();
-      </script>
+        
+        function changeImage(element) {
+            const mainImage = document.getElementById("mainImage");
+            mainImage.src = element.src;
+        }
 
-    
+
+
+    </script>
+
+
     <script src="./dist/js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

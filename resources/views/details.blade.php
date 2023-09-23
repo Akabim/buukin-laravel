@@ -225,7 +225,7 @@
                                     class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" id="" 
+                                <button type="submit" id=""
                                     class="cursor-pointer mt-3 mb-5 w-full lg:w-2/3 py-3 px-2 rounded-lg bg-primary text-white lg:text-lg">Reservasi</button>
                             </div>
                         </div>
@@ -745,11 +745,115 @@
         </div>
     </section>
 
+    <div id="chat" class=" hidden fixed lg:bottom-20 lg:right-20 right-16 bottom-16">
+        <div class="flex space-x-4">
+            <div class="lg:w-96 lg:h-[450px] w-72 h-80 flex flex-col border shadow-md bg-white rounded-xl">
+                <div class="flex items-center justify-between border-b p-2">
+                    <!-- user info -->
+                    <div class="flex items-center">
+                        <img class="rounded-full w-10 h-10" src="{{ asset('img/woodz-resto.png') }}" />
+                        <div class="pl-2">
+                            <div class="font-semibold">
+                                <a class="hover:underline" href="#">{{ $restos->name }}</a>
+                            </div>
+                            <div class="text-xs text-gray-600">Online</div>
+                        </div>
+                    </div>
+                    <!-- end user info -->
+                    <!-- chat box action -->
+                    <div>
+                        <button id="close" class="inline-flex hover:bg-indigo-50 rounded-full p-2"
+                            type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- end chat box action -->
+                </div>
+
+                <div class="flex-1 px-4 py-4 overflow-y-auto">
+                    <!-- chat message -->
+
+                    <div class="flex items-center mb-4">
+                        <div class="flex-none flex flex-col items-center space-y-1 mr-4">
+                            <img class="rounded-full w-10 h-10" src="{{ asset('img/woodz-resto.png') }}" />
+                            <a href="#" class="block text-xs hover:underline">{{ $restos->name }}</a>
+                        </div>
+                        <div class="flex-1 bg-indigo-400 text-white p-2 rounded-lg mb-2 relative">
+                            <div>Selamat datang di {{ $restos->name }}, ada yang bisa kami bantu?</div>
+
+                            <!-- arrow -->
+                            <div
+                                class="absolute left-0 top-1/2 transform -translate-x-1/2 rotate-45 w-2 h-2 bg-indigo-400">
+                            </div>
+                            <!-- end arrow -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center border-t p-2">
+                    <!-- chat input action --> <!-- end chat input action -->
+
+                    <div class="w-full mx-2">
+                        <input class="w-full rounded-full border border-gray-200" type="text" value=""
+                            placeholder="Aa" autofocus />
+                    </div>
+
+                    <!-- chat send action -->
+
+                    <div>
+                        <button class="inline-flex hover:bg-indigo-50 rounded-full p-2" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- end chat send action -->
+                </div>
+            </div>
+
+            <!-- end chat box -->
+
+        </div>
+    </div>
+
+
+    <div id="chat-btn"
+        class="cursor-pointer fixed z-[99999] flex items-center justify-center bottom-5 right-5 bg-primary rounded-full lg:w-16 lg:h-16 w-12 h-12">
+        <i data-feather="message-square" class="text-white lg:h-10 lg:w-10"></i>
+    </div>
+
+
+
     @extends('templates.footer')
     <script>
+        // Get the chat button and chat box elements
+        const chatBtn = document.getElementById("chat-btn");
+        const chatBox = document.getElementById("chat");
+
+        // Add a click event listener to the chat button
+        chatBtn.addEventListener("click", function() {
+            // Show the chat box
+            chatBox.style.display = "block";
+        });
+
+        // Get the close button element
+        const closeBtn = document.getElementById("close");
+
+        // Add a click event listener to the close button
+        closeBtn.addEventListener("click", function() {
+            // Hide the chat box
+            chatBox.style.display = "none";
+        });
 
 
-        
+
 
 
         feather.replace();

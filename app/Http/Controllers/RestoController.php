@@ -16,11 +16,11 @@ class RestoController extends Controller
 
     public function create()
     {
-        return view('restoran.index');
+        return view('admin.create');
     }
 
     public function store(Request $request)
-    {   
+    {
         // dd($request->all());
 
         $validatedData = $request->validate([
@@ -34,7 +34,7 @@ class RestoController extends Controller
             'photo_3' => 'image|mimes:jpeg,png,jpg,gif',
             'menu' => 'file|mimes:pdf|max:51200',
         ]);
-    
+
         // Upload foto
         $photoPaths = [];
         for ($i = 1; $i <= 3; $i++) {
@@ -43,38 +43,53 @@ class RestoController extends Controller
                 $photoPath = $request->file($photoName)->store("resto_photos", 'public');
                 // dd($photoPath);
                 $photoPaths[$photoName] = $photoPath;
-                
             }
         }
-        
-    
+
+
         // Upload file PDF
         if ($request->hasFile('menu')) {
             $pdfPath = $request->file('menu')->store("menus", 'public');
             $validatedData['menu'] = $pdfPath;
         }
-    
+
         // Simpan data restoran bersama dengan nama file foto dan PDF
         Resto::create(array_merge($validatedData, $photoPaths));
-        
-        
+
+
 
         return redirect()->route('admin.create');
     }
 
-    
-    public function show($id) {
+
+    public function show($id)
+    {
         $restos = Resto::find($id);
         // dd(gettype($restos));
         return view('details', compact('restos'));
     }
 
-    public function kategori(){
+    public function kategori()
+    {
         $restos = Resto::all();
         return view('kategori', compact('restos'));
     }
-    public function favorit(){
+    public function favorit()
+    {
         $restos = Resto::all();
         return view('favorit', compact('restos'));
+    }
+    public function welcome(Request $request)
+    {
+        $restos = Resto::all();
+        return view('welcome', compact('restos'));
+    }
+
+    public function liveSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $restos = Resto::where('name', 'like', '%' . $query . '%')->get();
+
+        return response()->json($restos);
     }
 }
