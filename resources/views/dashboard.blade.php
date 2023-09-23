@@ -117,7 +117,7 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper flex-shrink  max-w-full">
                   @foreach ($restos as $resto )
-                  <div class="swiper-slide restoran w-full "><a href="./detail-resto.html" class="group block rounded-lg">
+                  <div class="swiper-slide restoran w-full "><a href="{{ route('details.show', $resto->id) }}" class="group block rounded-lg">
                     <img
                       src="{{asset('storage/' . $resto->photo_1)}}"
                       alt=""
@@ -162,7 +162,7 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper flex-shrink  max-w-full">
                   @foreach ($restos as $resto )
-                  <div class="swiper-slide restoran w-full "><a href="./detail-resto.html" class="group block rounded-lg">
+                  <div class="swiper-slide restoran w-full "><a href="{{ route('details.show', $resto->id) }}" class="group block rounded-lg">
                     <img
                       src="{{asset('storage/' . $resto->photo_1)}}"
                       alt=""
@@ -207,7 +207,7 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper flex-shrink  max-w-full">
                   @foreach ($restos as $resto )
-                  <div class="swiper-slide restoran w-full "><a href="./detail-resto.html" class="group block rounded-lg">
+                  <div class="swiper-slide restoran w-full "><a href="{{ route('details.show', $resto->id) }}" class="group block rounded-lg">
                     <img
                       src="{{asset('storage/' . $resto->photo_1)}}"
                       alt=""
