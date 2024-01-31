@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="overflow-x-hidden">
+<html lang="id" class="overflow-x-hidden bg-white">
 
 <head>
     <meta charset="UTF-8" />
@@ -106,7 +106,7 @@
                             Harga tiap meja : Rp. {{ $restos->price }}</span> <span class="px-1 py-1 rounded-md text-primary ml-1.5 bg-primary bg-opacity-10">Surabaya</span>
                     </p>
                     <hr class="mb-4">
-                    <div class="relative lg:right-0 "><img id="mainImage" src="{{ asset('storage/resto_photos' . $restos->photo_1) }}" alt="abimanyu" class=" w-full mx-auto relative " /></div>
+                    <div class="relative lg:right-0 "><img id="mainImage" src="{{ asset('/resto_photos' . $restos->photo_1) }}" alt="abimanyu" class=" w-full mx-auto relative" /></div>
                     <div class="flex-wrap flex">
                         <div class="w-1/2 p-2  sm:w-1/3 rounded-lg">
                             <a href="#" class="block">
