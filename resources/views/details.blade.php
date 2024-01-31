@@ -8,13 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;900&display=swap" rel="stylesheet" />
     {{-- <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SET_YOUR_CLIENT_KEY_HERE"></script>   --}}
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -26,183 +24,149 @@
         <div class="container mx-auto">
             <div class="flex items-center justify-between relative py-3 px-4">
                 <div class="px-4 flex">
-                    <a href="{{ route('dashboard') }}" class="font-bold text-lg text-primary block py-2"> <img
-                            src="{{ asset('img/logo.png') }}" width="126px" height="29px" class="mt-1 lg:scale-110"
-                            alt="" />
+                    <a href="{{ route('dashboard') }}" class="font-bold text-lg text-primary block py-2"> <img src="{{ asset('img/logo.png') }}" width="126px" height="29px" class="mt-1 lg:scale-110" alt="" />
                     </a>
                 </div>
                 <div class="flex items-center px-4">
-                    <button id="hamburger" name="hamburger" type="button"
-                        class="scale-75 lg:hidden block absolute right-4">
-                        <span
-                            class="hamburger-line transition duration-300 ease-in-out origin-top-left rotate-45;"></span>
+                    <button id="hamburger" name="hamburger" type="button" class="scale-75 lg:hidden block absolute right-4">
+                        <span class="hamburger-line transition duration-300 ease-in-out origin-top-left rotate-45;"></span>
                         <span class="hamburger-line transition duration-300 ease-in-out"></span>
                         <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
                     </button>
-                    <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full lg:right-1/2 lg:top-1/2 right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                    <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full lg:right-1/2 lg:top-1/2 right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex justify-center">
                             <li class="group lg:text-center">
-                                <a href="{{ route('dashboard') }}"
-                                    class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Beranda</a>
+                                <a href="{{ route('dashboard') }}" class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Beranda</a>
                             </li>
                             <li class="group lg:text-center">
-                                <a href="{{ route('kategori') }}"
-                                    class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Kategori</a>
+                                <a href="{{ route('kategori') }}" class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Kategori</a>
                             </li>
                             <li class="group lg:text-center">
-                                <a href="{{ route('favorit') }}"
-                                    class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Favorit</a>
+                                <a href="{{ route('favorit') }}" class="text-primary lg:text-primary py-2 px-8 group-hover:underline underline-offset-8 group-hover:text-primary group-hover:font-semibold flex transition ease-in-out">Favorit</a>
                             </li>
                             <li id="account-text" class="group lg:text-center">
-                                <a href="{{ Route('profile.edit') }}"
-                                    class="lg:hidden text-primary lg:bg-primary bg-transparent rounded-full py-2 px-8 mx-auto lg:hover:border-primary lg:hover:border-2 lg:hover:bg-transparent lg:hover:text-primary group-hover:font-semibold flex">Account</a>
+                                <a href="{{ Route('profile.edit') }}" class="lg:hidden text-primary lg:bg-primary bg-transparent rounded-full py-2 px-8 mx-auto lg:hover:border-primary lg:hover:border-2 lg:hover:bg-transparent lg:hover:text-primary group-hover:font-semibold flex">Account</a>
                             </li>
                         </ul>
                     </nav>
 
                     <a href="">
-                        <i class="lg:ml-8 lg:mr-0 mr-4 lg:w-6 lg:h-6 inline-flex text-primary w-5 h-5"
-                            data-feather="bell" id=""></i>
+                        <i class="lg:ml-8 lg:mr-0 mr-4 lg:w-6 lg:h-6 inline-flex text-primary w-5 h-5" data-feather="bell" id=""></i>
                     </a>
                     <a href="{{ route('history') }}" target="_blank">
-                        <svg class="lg:ml-8 lg:mr-9 mr-7 lg:w-6 lg:h-6 inline-flex text-primary w-5 h-5"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1.4"
-                                d="M6 1v4a1 1 0 0 1-1 1H1m8-2h3M9 7h3m-4 3v6m-4-3h8m3-11v16a.969.969 0 0 1-.932 1H1.934A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.829 1h8.239A.969.969 0 0 1 15 2ZM4 10h8v6H4v-6Z" />
+                        <svg class="lg:ml-8 lg:mr-9 mr-7 lg:w-6 lg:h-6 inline-flex text-primary w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M6 1v4a1 1 0 0 1-1 1H1m8-2h3M9 7h3m-4 3v6m-4-3h8m3-11v16a.969.969 0 0 1-.932 1H1.934A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.829 1h8.239A.969.969 0 0 1 15 2ZM4 10h8v6H4v-6Z" />
                         </svg>
                         </i></a>
                     @if (Route::has('login'))
-                        @auth
-                            <div class="hidden sm:flex sm:items-center">
-                                <x-dropdown align="right" width="48">
-                                    <x-slot name="trigger">
-                                        <button class="lg:border-2 lg:border-primary lg:rounded-full ">
-                                            <i id="account-icons" name="user"
-                                                class="hidden lg:w-6 lg:h-6 lg:inline-flex text-primary w-5 h-5"
-                                                data-feather="user"></i>
-                                        </button>
-                                    </x-slot>
-                                    <x-slot name="content">
-                                        <x-dropdown-link :href="route('profile.edit')">
-                                            <div>{{ Auth::user()->name }}</div>
-                                        </x-dropdown-link>
+                    @auth
+                    <div class="hidden sm:flex sm:items-center">
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button class="lg:border-2 lg:border-primary lg:rounded-full ">
+                                    <i id="account-icons" name="user" class="hidden lg:w-6 lg:h-6 lg:inline-flex text-primary w-5 h-5" data-feather="user"></i>
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    <div>{{ Auth::user()->name }}</div>
+                                </x-dropdown-link>
 
-                                        <!-- Authentication -->
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                            <x-dropdown-link :href="route('logout')"
-                                                onclick="event.preventDefault();
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                                {{ __('Log Out') }}
-                                            </x-dropdown-link>
-                                        </form>
-                                    </x-slot>
-                                </x-dropdown>
-                            </div>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class=" w-full hidden mr-3 text-white lg:flex font-semibold bg-primary rounded-lg px-5 py-2">Log
-                                in</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class=" w-full hidden text-primary lg:flex font-semibold bg-secondary rounded-lg px-7 py-2">Register</a>
-                            @endif
-                        @endauth
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    @else
+                    <a href="{{ route('login') }}" class=" w-full hidden mr-3 text-white lg:flex font-semibold bg-primary rounded-lg px-5 py-2">Log
+                        in</a>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class=" w-full hidden text-primary lg:flex font-semibold bg-secondary rounded-lg px-7 py-2">Register</a>
+                    @endif
+                    @endauth
                     @endif
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="" class=" pt-24  lg:pt-40 ">
+    <section id="" class=" pt-24 lg:pt-40 bg-white">
         <div class="container mx-auto">
             <div class="flex flex-wrap">
                 <div class="w-full self-start px-4 lg:px-12 lg:w-1/2 lg:pb-10">
-                    <h1 class="font-semibold text-xl lg:text-4xl mb-4">{{ $restos->name }}</h1>
-                    <p class="font-normal text-sm lg:text-lg mb-7"> <span
-                            class="px-1 py-1 bg-primary bg-opacity-10 rounded-md">
-                            Harga tiap meja : Rp. {{ $restos->price }}</span> <span
-                            class="px-1 py-1 rounded-md text-primary ml-1.5 bg-primary bg-opacity-10">Surabaya</span>
+                    <h1 class="font-semibold text-xl lg:text-4xl mb-4 text-black">{{ $restos->name }}</h1>
+                    <p class="font-normal text-sm lg:text-lg mb-7 text-black"> <span class="px-1 py-1 bg-primary bg-opacity-10 rounded-md">
+                            Harga tiap meja : Rp. {{ $restos->price }}</span> <span class="px-1 py-1 rounded-md text-primary ml-1.5 bg-primary bg-opacity-10">Surabaya</span>
                     </p>
                     <hr class="mb-4">
-                    <div class="relative lg:right-0 "><img id="mainImage"
-                            src="{{ asset('storage/' . $restos->photo_1) }}" alt="abimanyu"
-                            class=" w-full mx-auto relative " /></div>
+                    <div class="relative lg:right-0 "><img id="mainImage" src="{{ asset('storage/resto_photos' . $restos->photo_1) }}" alt="abimanyu" class=" w-full mx-auto relative " /></div>
                     <div class="flex-wrap flex">
-                        <div class="w-1/2 p-2  sm:w-1/3 rounded-  lg">
+                        <div class="w-1/2 p-2  sm:w-1/3 rounded-lg">
                             <a href="#" class="block">
-                                <img src="{{ asset('storage/' . $restos->photo_1) }}" alt=""
-                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                                <img src="{{ asset('storage/' . $restos->photo_1) }}" alt="" class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
                         <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
                             <a href="#" class="block ">
-                                <img src="{{ asset('storage/' . $restos->photo_2) }}" alt=""
-                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                                <img src="{{ asset('storage/' . $restos->photo_2) }}" alt="" class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
                         <div class="w-1/2 p-2 sm:w-1/3 rounded-lg ">
                             <a href="#" class="block ">
-                                <img src="{{ asset('storage/' . $restos->photo_3) }}" alt=""
-                                    class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
+                                <img src="{{ asset('storage/' . $restos->photo_3) }}" alt="" class="object-cover w-full lg:h-32 rounded-lg" onmouseover="changeImage(this)">
                             </a>
                         </div>
                     </div>
                     <hr class="lg:mt-7 mt-3 lg:mb-5 mb-3 ">
 
                     <ul class="flex flex-wrap gap-10 lg:gap-56 lg:text-lg justify-center mb-7 font-normal group">
-                        <li id="menu" class="hover:text-primary"><a href="#">Menu</a></li>
-                        <li id="about-resto" class="hover:text-primary"><a href="#">About</a></li>
-                        <li id="coupons" class="hover:text-primary"><a href="#">Coupons</a></li>
+                        <li id="menu" class="hover:text-primary text-black"><a href="#">Menu</a></li>
+                        <li id="about-resto" class="hover:text-primary text-black"><a href="#">About</a></li>
+                        <li id="coupons" class="hover:text-primary text-black"><a href="#">Coupons</a></li>
                     </ul>
 
 
                     <div id="about-resto-div" class="about hidden">
-                        <h1 class="font-semibold text-lg lg:text-2xl mb-3">Tentang Restoran Ini</h1>
-                        <p class="font-thin text-sm lg:text-lg text-justify">{{ $restos->description }}?</p>
+                        <h1 class="font-semibold text-lg lg:text-2xl mb-3 text-black">Tentang Restoran Ini</h1>
+                        <p class="font-thin text-sm lg:text-lg text-justify text-black">{{ $restos->description }}?</p>
                     </div>
 
                     <div class="menu">
-                        <h1 class="font-semibold text-lg lg:text-2xl mb-3">Menu</h1>
-                        <a class="w-24 h-24 rounded-lg bg-slate-200" target="_blank"
-                            href="{{ asset('storage/' . $restos->menu) }}">
+                        <h1 class="font-semibold text-lg lg:text-2xl mb-3 text-black">Menu</h1>
+                        <a class="w-24 h-24 rounded-lg bg-slate-200" target="_blank" href="{{ asset('storage/' . $restos->menu) }}">
                             <img src="{{ asset('img/woodz-resto.png') }}" class="w-24 h-24" alt="">
                         </a>
 
                     </div>
                     <div class="coupons hidden">
-                        <h1 class="font-semibold text-lg lg:text-2xl mb-3">Coupons</h1>
+                        <h1 class="font-semibold text-lg lg:text-2xl mb-3 text-black">Coupons</h1>
                         <div class="swiper3">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img title="Discount 10% For Beverages"
-                                        src="{{ asset('img/coupons/10.png') }}"
-                                        class="scale-75 hover:scale-100 transition" alt=""></div>
-                                <div class="swiper-slide"><img title="Discount 20% For Desert"
-                                        src="{{ asset('img/coupons/20.png') }}"
-                                        class="scale-75 hover:scale-100 transition" alt=""></div>
-                                <div class="swiper-slide"><img title="Discount 30% For Main Course"
-                                        src="{{ asset('img/coupons/30.png') }}"
-                                        class="scale-75 hover:scale-100 transition" alt=""></div>
+                                <div class="swiper-slide"><img title="Discount 10% For Beverages" src="{{ asset('img/coupons/10.png') }}" class="scale-75 hover:scale-100 transition" alt=""></div>
+                                <div class="swiper-slide"><img title="Discount 20% For Desert" src="{{ asset('img/coupons/20.png') }}" class="scale-75 hover:scale-100 transition" alt=""></div>
+                                <div class="swiper-slide"><img title="Discount 30% For Main Course" src="{{ asset('img/coupons/30.png') }}" class="scale-75 hover:scale-100 transition" alt=""></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('booking.checkout') }}" method="post" class="w-full lg:w-1/2"
-                    enctype="multipart/form-data">
+                <form action="{{ route('booking.checkout') }}" method="post" class="w-full lg:w-1/2" enctype="multipart/form-data">
                     @csrf
                     <div class=" w-full px-4 sticky top-0">
                         <div class="lg:pl-44">
-                            <h1 class="font-semibold text-xl lg:text-4xl mb-4 lg:mb-5 mt-7 lg:mt-32">Reservasi
+                            <h1 class="font-semibold text-xl lg:text-4xl mb-4 lg:mb-5 mt-7 lg:mt-32 text-black">Reservasi
                                 Sekarang!
                             </h1>
                             <hr class="mb-5 lg:w-96">
                             <label for="tables" class="mb-3 font-normal lg:text-xl">Jumlah Meja</label>
                             <div class="">
-                                <select name="table_count" id="table_count"
-                                    class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
+                                <select name="table_count" id="table_count" class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
                                     <option value="1">1 Meja</option>
                                     <option value="2">2 Meja</option>
                                     <option value="3">3 Meja</option>
@@ -216,17 +180,14 @@
 
                             <label for="tables" class="mb-3 font-normal lg:text-xl">Tanggal Pemesanan</label>
                             <div class="">
-                                <input type="date" name="booking_date" id="reservationDate"
-                                    class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
+                                <input type="date" name="booking_date" id="reservationDate" class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
                             </div>
                             <label for="tables" class="mb-3 font-normal lg:text-xl">Waktu Pemesanan</label>
                             <div class="">
-                                <input type="time" name="booking_time" id="reservationTime"
-                                    class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
+                                <input type="time" name="booking_time" id="reservationTime" class="mt-1.5 mb-5 w-full lg:w-2/3 py-2 px-2 rounded-lg border-primary border-2 text-black lg:text-lg">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" id=""
-                                    class="cursor-pointer mt-3 mb-5 w-full lg:w-2/3 py-3 px-2 rounded-lg bg-primary text-white lg:text-lg">Reservasi</button>
+                                <button type="submit" id="" class="cursor-pointer mt-3 mb-5 w-full lg:w-2/3 py-3 px-2 rounded-lg bg-primary text-white lg:text-lg">Reservasi</button>
                             </div>
                         </div>
                     </div>
@@ -235,10 +196,10 @@
         </div>
         </div>
     </section>
-    <section id="denah" class="pb-24">
+    <section id="denah" class="pb-24 bg-white">
         <div class="container mx-auto">
             <div class="flex-flex-wrap lg:px-12 px-4">
-                <h1 class="font-semibold text-xl lg:text-4xl mb-7 mt-7">Denah {{ $restos->name }} </h1>
+                <h1 class="font-semibold text-xl lg:text-4xl mb-7 mt-7 text-black">Denah {{ $restos->name }} </h1>
                 <div class="inline-flex lg:mb-7 ">
                     <div class="bg-primary w-7 h-7 rounded-lg cursor-pointer kursi mr-3">
                     </div>
@@ -313,8 +274,7 @@
                                 <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                             </div>
                             <div class="block">
-                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                    data-kursi="11">
+                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="11">
                                     <p class="text-center items-center text-[#C2C2C2] font-normal">11</p>
                                 </div>
                                 <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="12">
@@ -325,8 +285,7 @@
                         </div>
                         <div class="set inline-flex mr-14">
                             <div class="block mr-2">
-                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                    data-kursi="13">
+                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="13">
                                     <p class="text-center items-center text-[#C2C2C2] font-normal">13</p>
                                 </div>
                                 <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="14">
@@ -337,8 +296,7 @@
                                 <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                             </div>
                             <div class="block">
-                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                    data-kursi="15">
+                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="15">
                                     <p class="text-center items-center text-[#C2C2C2] font-normal">15</p>
                                 </div>
                                 <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="16">
@@ -349,8 +307,7 @@
                         </div>
                         <div class="set inline-flex mr-14">
                             <div class="block mr-2">
-                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                    data-kursi="17">
+                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="17">
                                     <p class="text-center items-center text-[#C2C2C2] font-normal">17</p>
                                 </div>
                                 <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="18">
@@ -361,8 +318,7 @@
                                 <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                             </div>
                             <div class="block">
-                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                    data-kursi="19">
+                                <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="19">
                                     <p class="text-center items-center text-[#C2C2C2] font-normal">19</p>
                                 </div>
                                 <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="20">
@@ -612,16 +568,14 @@
                             <h1 class="rotate-90 ml-36 text-4xl font-bold text-primary text-opacity-40">KASIR</h1>
                         </div>
                     </div>
-                    <hr
-                        class="lg:w-full w-[1500px] h-1 mx-auto my-10 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+                    <hr class="lg:w-full w-[1500px] h-1 mx-auto my-10 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
                     <div class="relative inline-flex">
                         <h1 class="mr-96 text-4xl font-bold text-primary text-opacity-40">OUT <br> DOOR <br> AREA
                         </h1>
                         <div class="flex justify-end">
                             <div class="set inline-flex mr-14">
                                 <div class="block mr-2">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                        data-kursi="51">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="51">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">51</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="52">
@@ -632,8 +586,7 @@
                                     <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                                 </div>
                                 <div class="block">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                        data-kursi="53">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="53">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">53</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="54">
@@ -644,8 +597,7 @@
                             </div>
                             <div class="set inline-flex mr-14">
                                 <div class="block mr-2">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                        data-kursi="55">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="55">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">55</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="56">
@@ -656,8 +608,7 @@
                                     <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                                 </div>
                                 <div class="block">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                        data-kursi="57">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="57">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">57</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="58">
@@ -668,8 +619,7 @@
                             </div>
                             <div class="set inline-flex mr-14">
                                 <div class="block mr-2">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                        data-kursi="59">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="59">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">59</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="60">
@@ -680,8 +630,7 @@
                                     <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                                 </div>
                                 <div class="block">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                        data-kursi="61">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="61">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">61</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="62">
@@ -692,8 +641,7 @@
                             </div>
                             <div class="set inline-flex mr-14">
                                 <div class="block mr-2">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                        data-kursi="63">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="63">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">63</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="64">
@@ -704,8 +652,7 @@
                                     <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                                 </div>
                                 <div class="block">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                        data-kursi="65">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="65">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">65</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="66">
@@ -716,8 +663,7 @@
                             </div>
                             <div class="set inline-flex mr-14">
                                 <div class="block mr-2">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi"
-                                        data-kursi="67">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg cursor-pointer kursi" data-kursi="67">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">67</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="68">
@@ -728,8 +674,7 @@
                                     <div class="bg-[#E0E0E0] w-12 h-20 rounded-lg"></div>
                                 </div>
                                 <div class="block">
-                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer"
-                                        data-kursi="69">
+                                    <div class="bg-[#E0E0E0] w-7 h-7 mb-6 rounded-lg kursi cursor-pointer" data-kursi="69">
                                         <p class="text-center items-center text-[#C2C2C2] font-normal">69</p>
                                     </div>
                                     <div class="bg-[#E0E0E0] w-7 h-7 rounded-lg kursi cursor-pointer" data-kursi="70">
@@ -762,12 +707,9 @@
                     <!-- end user info -->
                     <!-- chat box action -->
                     <div>
-                        <button id="close" class="inline-flex hover:bg-indigo-50 rounded-full p-2"
-                            type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
+                        <button id="close" class="inline-flex hover:bg-indigo-50 rounded-full p-2" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -786,8 +728,7 @@
                             <div>Selamat datang di {{ $restos->name }}, ada yang bisa kami bantu?</div>
 
                             <!-- arrow -->
-                            <div
-                                class="absolute left-0 top-1/2 transform -translate-x-1/2 rotate-45 w-2 h-2 bg-indigo-400">
+                            <div class="absolute left-0 top-1/2 transform -translate-x-1/2 rotate-45 w-2 h-2 bg-indigo-400">
                             </div>
                             <!-- end arrow -->
                         </div>
@@ -795,21 +736,19 @@
                 </div>
 
                 <div class="flex items-center border-t p-2">
-                    <!-- chat input action --> <!-- end chat input action -->
+                    <!-- chat input action -->
+                    <!-- end chat input action -->
 
                     <div class="w-full mx-2">
-                        <input class="w-full rounded-full border border-gray-200" type="text" value=""
-                            placeholder="Aa" autofocus />
+                        <input class="w-full rounded-full border border-gray-200" type="text" value="" placeholder="Aa" autofocus />
                     </div>
 
                     <!-- chat send action -->
 
                     <div>
                         <button class="inline-flex hover:bg-indigo-50 rounded-full p-2" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </button>
                     </div>
@@ -824,8 +763,7 @@
     </div>
 
 
-    <div id="chat-btn"
-        class="cursor-pointer fixed z-[99999] flex items-center justify-center bottom-5 right-5 bg-primary rounded-full lg:w-16 lg:h-16 w-12 h-12">
+    <div id="chat-btn" class="cursor-pointer fixed z-[99999] flex items-center justify-center bottom-5 right-5 bg-primary rounded-full lg:w-16 lg:h-16 w-12 h-12">
         <i data-feather="message-square" class="text-white lg:h-10 lg:w-10"></i>
     </div>
 
@@ -893,6 +831,7 @@
             aboutDiv.classList.add("hidden");
             couponsDiv.classList.remove("hidden");
         });
+
     </script>
     <script src="./dist/js/script.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
